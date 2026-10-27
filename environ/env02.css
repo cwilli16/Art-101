@@ -1,177 +1,454 @@
 
-/* Original environment styling */
-body {
-    background-color: #172033;
-    background-image: url("gigglegoon.png");
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
+/* =========================================
+   THE SWAMP LANDS - VISUAL REDESIGN
+   Keep the original background image settings.
+   ========================================= */
 
-    color: #ffffff;
-    padding: 40px;
-    font-family: sans-serif;
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    padding: 48px clamp(20px, 5vw, 76px) 36px;
+    color: #e8eee5;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* INTRODUCTION */
+
+#intro {
+    position: relative;
+    z-index: 2;
+    width: min(660px, 100%);
+    margin-bottom: 30px;
+}
+
+.eyebrow {
+    margin: 0 0 12px;
+    color: #a2c6a5;
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 3px;
 }
 
 h1 {
-    color: #7de3ff;
+    margin: 0;
+    color: #d8eee0;
+    font-size: clamp(36px, 5vw, 62px);
+    line-height: 1.05;
+    letter-spacing: -2px;
+    text-shadow: 0 3px 24px rgba(0, 0, 0, 0.5);
+}
+
+h1 span {
+    color: #8fbc87;
 }
 
 #introduction {
-    max-width: 800px;
-    font-size: 18px;
-    line-height: 1.6;
+    max-width: 590px;
+    margin: 18px 0;
+    color: #e1e8df;
+    font-size: 15px;
+    line-height: 1.85;
+    text-shadow: 0 2px 8px #071411;
 }
 
-/* TOP ZONE: swamp atmosphere */
+.location-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 9px 13px;
+    border: 1px solid rgba(183, 220, 184, 0.25);
+    border-radius: 3px;
+    background: rgba(9, 30, 25, 0.72);
+    color: #c4d9c5;
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+
+/* Small glowing status indicator */
+
+.status-dot {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: #a6d99e;
+    box-shadow: 0 0 10px rgba(166, 217, 158, 0.7);
+}
+
+/* ATMOSPHERE */
+
 #top {
     position: relative;
-    height: 150px;
-    max-width: 1000px;
-    margin: 25px auto 0;
+    height: 110px;
+    margin: 0 auto 22px;
     overflow: hidden;
-    background: rgba(15, 40, 48, 0.65);
-    border-radius: 15px 15px 0 0;
+    border-top: 1px solid rgba(180, 211, 186, 0.15);
+    border-bottom: 1px solid rgba(180, 211, 186, 0.15);
+    background: linear-gradient(
+        90deg,
+        rgba(9, 31, 28, 0.35),
+        rgba(13, 42, 37, 0.65),
+        rgba(9, 31, 28, 0.35)
+    );
 }
 
-/* Moon in the swamp sky */
 #moon {
     position: absolute;
-    top: 20px;
-    right: 15%;
-    width: 55px;
-    height: 55px;
-    background: #c9e8d2;
+    top: 17px;
+    right: 12%;
+    width: 43px;
+    height: 43px;
     border-radius: 50%;
-    box-shadow: 0 0 25px rgba(150, 255, 208, 0.6);
+    background: #d5f0d7;
+    box-shadow:
+        0 0 20px rgba(189, 239, 201, 0.35),
+        0 0 60px rgba(139, 209, 167, 0.16);
 }
 
-/* Low mist */
 #mist {
     position: absolute;
-    bottom: 20px;
-    left: 8%;
-    width: 80%;
-    height: 35px;
-    background: rgba(160, 205, 190, 0.25);
+    left: -5%;
+    bottom: 15px;
+    width: 75%;
+    height: 24px;
     border-radius: 50%;
+    background: rgba(178, 213, 190, 0.12);
+    filter: blur(8px);
 }
 
-/* Swamp plants */
 #swamp-plants {
     position: absolute;
-    bottom: 8px;
-    left: 8%;
+    bottom: 10px;
+    left: 7%;
     display: flex;
-    gap: 45px;
-    color: #78a66a;
-    font-size: 35px;
+    gap: 22px;
+    color: #9ac78d;
+    font-size: 21px;
+    text-shadow: 0 0 12px rgba(151, 211, 138, 0.3);
 }
 
-/* MAIN ZONE: Gigglegoon and swamp objects */
+.atmosphere-label {
+    position: absolute;
+    right: 12px;
+    bottom: 5px;
+    margin: 0;
+    color: rgba(213, 234, 215, 0.65);
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+
+/* MAIN ENVIRONMENT PANEL */
+
 #main {
-    max-width: 1000px;
-    min-height: 350px;
+    position: relative;
+    width: min(100%, 1000px);
     margin: 0 auto;
-    padding: 25px;
-    box-sizing: border-box;
-
-    /* Required flexbox */
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    gap: 25px;
-
-    background: rgba(13, 34, 37, 0.85);
-    border-radius: 0 0 15px 15px;
+    padding: clamp(22px, 4vw, 42px);
+    border: 1px solid rgba(191, 218, 190, 0.2);
+    border-radius: 5px;
+    background: rgba(7, 24, 22, 0.78);
+    box-shadow: 0 18px 60px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(5px);
 }
 
-/* Gigglegoon: main focus */
-#gigglegoon {
-    width: 40%;
-    text-align: center;
-}
+/* Remove old decorative objects that clutter the new layout */
 
-#gigglegoon img {
-    display: block;
-    width: 300px;
-    max-width: 100%;
-    height: auto;
-    margin: 0 auto;
-    border-radius: 10px;
-}
-
-#gigglegoon p,
-#swamp-tree p {
-    color: #bceeff;
-    font-size: 16px;
-    font-weight: bold;
-}
-
-/* Supporting rocks */
-.rock {
-    width: 55px;
-    height: 35px;
-    flex-shrink: 0;
-    background: #566d66;
-    border-radius: 45% 55% 35% 30%;
-    box-shadow: 0 8px 0 rgba(0, 0, 0, 0.2);
-}
-
+#left-rock,
 #right-rock {
-    width: 40px;
-    height: 25px;
+    display: none;
 }
 
-/* Supporting swamp tree */
-#swamp-tree {
-    width: 100px;
-    flex-shrink: 0;
-    text-align: center;
+.scene-heading {
+    margin-bottom: 26px;
+}
+
+.scene-heading h2,
+.data-heading h2 {
+    margin: 0 0 8px;
+    color: #e1eee1;
+    font-size: clamp(24px, 3vw, 34px);
+    letter-spacing: -0.7px;
+}
+
+.scene-heading > p:last-child,
+.data-heading > p:last-child {
+    margin: 0;
+    color: #b7c9ba;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+/* DISCOVERY CARDS */
+
+.discovery-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.85fr);
+    gap: 18px;
+}
+
+.discovery-card {
+    min-width: 0;
+    overflow: hidden;
+    border: 1px solid rgba(185, 215, 185, 0.17);
+    border-radius: 4px;
+    background: rgba(27, 51, 42, 0.72);
+    transition:
+        border-color 180ms ease,
+        transform 180ms ease,
+        background 180ms ease;
+}
+
+.discovery-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(168, 213, 163, 0.5);
+    background: rgba(33, 63, 49, 0.88);
+}
+
+.card-image {
+    position: relative;
+    height: 245px;
+    overflow: hidden;
+    background: #172d26;
+}
+
+.card-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.image-tag {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    padding: 7px 9px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(7, 23, 20, 0.82);
+    color: #e0e9de;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+}
+
+.card-copy {
+    padding: 20px;
+}
+
+.card-category {
+    margin: 0 0 9px;
+    color: #9fca9d;
+    font-size: 9px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.card-copy h3 {
+    margin: 0 0 10px;
+    color: #e5eee3;
+    font-size: 22px;
+}
+
+.card-copy > p:not(.card-category) {
+    min-height: 44px;
+    margin: 0 0 18px;
+    color: #c0cec0;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+/* CSS-DRAWN TREE */
+
+.tree-art {
+    display: flex;
+    height: 245px;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    flex-direction: column;
+    background:
+        radial-gradient(
+            ellipse at center,
+            rgba(101, 145, 97, 0.17),
+            transparent 68%
+        ),
+        #172d26;
 }
 
 .tree-top {
-    width: 85px;
-    height: 75px;
-    margin: 0 auto;
-    background: #416c4d;
-    border-radius: 50% 45% 40% 45%;
-    box-shadow: 0 0 15px rgba(100, 160, 100, 0.2);
+    width: 112px;
+    height: 102px;
+    border: 2px solid rgba(173, 201, 151, 0.12);
+    border-radius: 48% 52% 45% 55%;
+    background: #426f4c;
+    box-shadow: 0 0 30px rgba(91, 153, 92, 0.13);
 }
 
 .tree-trunk {
-    width: 22px;
-    height: 75px;
-    margin: -5px auto 0;
-    background: #715641;
+    width: 19px;
+    height: 65px;
+    margin-top: -3px;
+    background: #86684c;
 }
 
-#swamp-tree p {
+/* BUTTONS */
+
+.discover-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    width: 100%;
+    padding: 12px 13px;
+    border: 1px solid rgba(162, 206, 158, 0.32);
+    border-radius: 3px;
+    background: rgba(8, 26, 22, 0.55);
+    color: #dcebdd;
+    cursor: pointer;
+    font-size: 12px;
+    text-align: left;
+    transition: background 180ms ease;
+}
+
+.discover-button span {
+    color: #a8d5a1;
+    font-size: 17px;
+}
+
+.discover-button:hover {
+    background: rgba(72, 115, 77, 0.45);
+}
+
+button:focus-visible {
+    outline: 2px solid #c1e8b5;
+    outline-offset: 4px;
+}
+
+/* JAVASCRIPT DATA ARCHIVE */
+
+#swamp-data {
+    margin-top: 34px;
+    padding: clamp(18px, 3vw, 28px);
+    border: 1px solid rgba(170, 205, 166, 0.23);
+    border-radius: 4px;
+    background: rgba(6, 20, 18, 0.6);
+}
+
+.data-heading {
+    margin-bottom: 22px;
+}
+
+#data-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin-bottom: 17px;
+}
+
+#data-buttons button {
+    padding: 11px 13px;
+    border: 1px solid rgba(159, 199, 153, 0.3);
+    border-radius: 3px;
+    background: #254737;
+    color: #e0ece0;
+    cursor: pointer;
+    font-size: 11px;
+    transition:
+        background 180ms ease,
+        border-color 180ms ease;
+}
+
+#data-buttons button:hover {
+    border-color: #a6d29d;
+    background: #386348;
+}
+
+#environment-output {
+    min-height: 85px;
+    padding: 18px;
+    border-left: 2px solid #8ebc86;
+    background: rgba(175, 207, 171, 0.06);
+    color: #dce6da;
     font-size: 13px;
+    line-height: 1.8;
+    overflow-wrap: anywhere;
 }
 
-/* Small-screen adjustments */
+#environment-output h3 {
+    margin: 0 0 10px;
+    color: #c6e3bd;
+    font-size: 19px;
+}
+
+#environment-output p {
+    margin: 6px 0;
+}
+
+#environment-output ul {
+    padding-left: 20px;
+}
+
+#environment-output li {
+    padding: 3px 0;
+}
+
+/* FOOTER */
+
+#main footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin-top: 30px;
+    padding-top: 17px;
+    border-top: 1px solid rgba(185, 215, 185, 0.16);
+    color: #9bb19c;
+    font-size: 9px;
+    letter-spacing: 1.7px;
+}
+
+/* SMALL SCREENS */
+
 @media (max-width: 650px) {
     body {
-        padding: 15px;
+        padding: 28px 16px;
+    }
+
+    #intro {
+        margin-bottom: 24px;
+    }
+
+    #top {
+        height: 90px;
     }
 
     #main {
-        flex-wrap: wrap;
-        gap: 15px;
-        padding: 20px 10px;
+        padding: 20px 14px;
     }
 
-    #gigglegoon {
-        width: 65%;
-        order: -1;
+    .discovery-grid {
+        grid-template-columns: 1fr;
     }
 
-    #gigglegoon img {
-        width: 240px;
+    .card-image,
+    .tree-art {
+        height: 220px;
     }
 
-    #swamp-tree {
-        width: 80px;
+    #data-buttons {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    #data-buttons button {
+        min-height: 44px;
+    }
+
+    #main footer {
+        flex-direction: column;
     }
 }

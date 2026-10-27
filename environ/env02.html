@@ -1,57 +1,144 @@
 
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>My Environment 02 - The Swamp Lands</title>
-    <link href="env02.css" rel="stylesheet" type="text/css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>The Swamp Lands</title>
+
+    <link rel="stylesheet" href="env03.css">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="env03.js" defer></script>
 </head>
 
 <body>
 
-    <h1>The Swamp Lands</h1>
+    <header id="intro">
+        <p class="eyebrow">AN UNCHARTED WORLD</p>
 
-    <p id="introduction">
-        Far away in a world full of rulers and servants, dragons and aliens,
-        lies the gigglegoon, not much of a monster, not much of anything really,
-        but such is this world where things matter and others do not.
-    </p>
+        <h1>The Swamp Lands<span>.</span></h1>
 
-    <!-- Environmental zone: the swamp atmosphere -->
-    <div id="top">
+        <p id="introduction">
+            Far away in a world of rulers and servants, dragons and aliens,
+            lies the Gigglegoon. Not much of a monster, not much of anything
+            really. Yet this is a world where some things matter, and others do not.
+        </p>
 
-        <div id="moon"></div>
-
-        <div id="mist"></div>
-
-        <div id="swamp-plants">
-            <span>♣</span>
-            <span>♣</span>
-            <span>♣</span>
+        <div class="location-tag">
+            <span class="status-dot"></span>
+            UNKNOWN TERRITORY
         </div>
+    </header>
 
-    </div>
+    <main>
 
-    <!-- Main zone: the Gigglegoon and its surroundings -->
-    <div id="main">
+        <!-- ATMOSPHERE -->
+        <section id="top" aria-label="The swamp atmosphere">
 
-        <div id="left-rock" class="rock"></div>
+            <div id="moon"></div>
+            <div id="mist"></div>
 
-        <div id="gigglegoon">
-            <img src="gg.png" alt="A Gigglegoon resting in the swamp">
-            <p>The Gigglegoon</p>
-        </div>
+            <div id="swamp-plants" aria-hidden="true">
+                <span>♣</span>
+                <span>♣</span>
+                <span>♣</span>
+                <span>♣</span>
+                <span>♣</span>
+            </div>
 
-        <div id="swamp-tree">
-            <div class="tree-top"></div>
-            <div class="tree-trunk"></div>
-            <p>Swamp Tree</p>
-        </div>
+            <p class="atmosphere-label">THE WATERS REMEMBER</p>
+        </section>
 
-        <div id="right-rock" class="rock"></div>
+        <!-- MAIN ENVIRONMENT -->
+        <section id="main" aria-label="Discover the Swamp Lands">
 
-    </div>
+            <div class="scene-heading">
+                <p class="eyebrow">FIELD NOTES / 001</p>
+                <h2>Things That Remain</h2>
+                <p>Not everything here is what it seems.</p>
+            </div>
+
+            <div class="discovery-grid">
+
+                <article id="gigglegoon" class="discovery-card creature-card">
+                    <div class="card-image">
+                        <img
+                            src="gg.png"
+                            alt="The Gigglegoon resting in the swamp"
+                        >
+                        <span class="image-tag">SPECIMEN 01</span>
+                    </div>
+
+                    <div class="card-copy">
+                        <p class="card-category">THE UNEXPLAINED</p>
+                        <h3>The Gigglegoon</h3>
+                        <p>
+                            A creature of uncertain purpose. Perhaps a monster.
+                            Perhaps nothing at all.
+                        </p>
+                        <button id="creature-button" class="discover-button">
+                            Examine specimen <span>↗</span>
+                        </button>
+                    </div>
+                </article>
+
+                <article id="swamp-tree" class="discovery-card tree-card">
+                    <div class="tree-art" aria-hidden="true">
+                        <div class="tree-top"></div>
+                        <div class="tree-trunk"></div>
+                    </div>
+
+                    <div class="card-copy">
+                        <p class="card-category">NATIVE VEGETATION</p>
+                        <h3>The Swamp Tree</h3>
+                        <p>
+                            Rooted in the same soil for longer than anyone
+                            can remember.
+                        </p>
+                        <button id="tree-button" class="discover-button">
+                            Inspect tree <span>↗</span>
+                        </button>
+                    </div>
+                </article>
+
+            </div>
+
+            <!-- DATA INTERACTION AREA -->
+            <section id="swamp-data">
+                <div class="data-heading">
+                    <p class="eyebrow">RESTRICTED ARCHIVE</p>
+                    <h2>Secrets of the Swamp</h2>
+                    <p>
+                        Look closer. The environment has more to tell you.
+                    </p>
+                </div>
+
+                <div id="data-buttons">
+                    <button id="title-button">The Location</button>
+                    <button id="elements-button">Field Inventory</button>
+                    <button id="warning-button">Warnings</button>
+                    <button id="discovery-button">Record Discovery</button>
+                </div>
+
+                <div id="environment-output" aria-live="polite">
+                    <p>
+                        <span class="status-dot"></span>
+                        Select a record to reveal its contents.
+                    </p>
+                </div>
+            </section>
+
+            <footer>
+                <span>THE SWAMP LANDS</span>
+                <span>END OF KNOWN RECORDS</span>
+            </footer>
+
+        </section>
+
+    </main>
 
 </body>
 </html>
